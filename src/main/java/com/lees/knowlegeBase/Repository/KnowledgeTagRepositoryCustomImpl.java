@@ -12,6 +12,7 @@ import com.lees.knowlegeBase.entity.KnowledgeTag;
 public class KnowledgeTagRepositoryCustomImpl<T> implements KnowledgeTagRepositoryCustom<T> {
 	
 	
+	
 	public <S extends T> S save(S entity) {
 					
 		return null;
