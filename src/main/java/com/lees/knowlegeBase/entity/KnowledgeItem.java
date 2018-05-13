@@ -2,6 +2,9 @@ package com.lees.knowlegeBase.entity;
 
 import javax.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 public class KnowledgeItem {
 	
@@ -9,9 +12,10 @@ public class KnowledgeItem {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	@ManyToOne
-	@JoinColumn(name = "KnowledgeItemTagId")
-	private KnowledgeItemTag knowledgeItemTag;
+	@ManyToMany
+	@JoinTable (name = "Knowledge_KnowledgeItem", joinColumns = @JoinColumn(name = "KnowledgeItem_Id", referencedColumnName = "Id"), 
+	inverseJoinColumns = @JoinColumn(name = "KnowledgeItem_Tag_Id", referencedColumnName = "Id"))
+	private Set<KnowledgeTag> knowledgeItemTags = new HashSet<KnowledgeTag>();
 	
 	private String title;
 	private String content;
@@ -22,10 +26,15 @@ public class KnowledgeItem {
 		
 	}
 	
-	public KnowledgeItem(String title, String content, KnowledgeItemTag knowledgeItemTag) {
+	public KnowledgeItem(String title, String content) {
 		this.title = title;
 		this.content = content;
-		this .knowledgeItemTag = knowledgeItemTag;
+	}
+	
+	public KnowledgeItem(String title, String content, Set<KnowledgeTag> knowledgeItemTags) {
+		this.title = title;
+		this.content = content;
+		this.knowledgeItemTags = knowledgeItemTags;
 	}
 	
 	
@@ -53,11 +62,11 @@ public class KnowledgeItem {
 		this.content = content;
 	}
 	
-	public KnowledgeItemTag getKnowledgeItemTag() {
-		return knowledgeItemTag;
+	public Set<KnowledgeTag> getKnowledgeTags() {
+		return this.knowledgeItemTags;
 	}
 	
-	public void setKnowledgeItemTag(KnowledgeItemTag knowledgeItemTag) {
-		this.knowledgeItemTag = knowledgeItemTag;
+	public void setKnowledgeTags(Set<KnowledgeTag> knowledgeItemTags) {
+		this.knowledgeItemTags = knowledgeItemTags;
 	}
 }
