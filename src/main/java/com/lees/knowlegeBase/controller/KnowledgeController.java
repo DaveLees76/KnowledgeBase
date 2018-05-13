@@ -15,7 +15,6 @@ import com.lees.knowlegeBase.Repository.KnowledgeTagRepository;
 import com.lees.knowlegeBase.entity.KnowledgeItem;
 import com.lees.knowlegeBase.entity.KnowledgeTag;
 
-import antlr.collections.List;
 
 @RestController
 public class KnowledgeController {
