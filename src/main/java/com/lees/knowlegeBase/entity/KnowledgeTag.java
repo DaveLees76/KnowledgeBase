@@ -12,11 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 
 
 
 @Entity
 @Table( name="knowledge_tag")
+@NamedQuery(name = "KnowledgeTag.findByTag",
+query = "select t from KnowledgeTag t where t.tag = :tagString")
 public class KnowledgeTag {
 	
 	@Id
