@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class KnowledgeItem {
+public class Item {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,23 +15,23 @@ public class KnowledgeItem {
 	@ManyToMany
 	@JoinTable (name = "Knowledge_KnowledgeItem", joinColumns = @JoinColumn(name = "KnowledgeItem_Id", referencedColumnName = "Id"), 
 	inverseJoinColumns = @JoinColumn(name = "KnowledgeItem_Tag_Id", referencedColumnName = "Id"))
-	private Set<KnowledgeTag> knowledgeItemTags = new HashSet<KnowledgeTag>();
+	private Set<Tag> knowledgeItemTags = new HashSet<Tag>();
 	
 	private String title;
 	private String content;
 	
 	
 	
-	public KnowledgeItem() {
+	public Item() {
 		
 	}
 	
-	public KnowledgeItem(String title, String content) {
+	public Item(String title, String content) {
 		this.title = title;
 		this.content = content;
 	}
 	
-	public KnowledgeItem(String title, String content, Set<KnowledgeTag> knowledgeItemTags) {
+	public Item(String title, String content, Set<Tag> knowledgeItemTags) {
 		this.title = title;
 		this.content = content;
 		this.knowledgeItemTags = knowledgeItemTags;
@@ -62,11 +62,11 @@ public class KnowledgeItem {
 		this.content = content;
 	}
 	
-	public Set<KnowledgeTag> getKnowledgeTags() {
+	public Set<Tag> getKnowledgeTags() {
 		return this.knowledgeItemTags;
 	}
 	
-	public void setKnowledgeTags(Set<KnowledgeTag> knowledgeItemTags) {
+	public void setKnowledgeTags(Set<Tag> knowledgeItemTags) {
 		this.knowledgeItemTags = knowledgeItemTags;
 	}
 }

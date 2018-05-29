@@ -1,34 +1,28 @@
 package com.lees.knowlegeBase.controller;
 
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.StringTokenizer;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lees.knowlegeBase.Repository.KnowledgeItemRepository;
-import com.lees.knowlegeBase.Repository.KnowledgeTagRepository;
-import com.lees.knowlegeBase.entity.KnowledgeItem;
-import com.lees.knowlegeBase.entity.KnowledgeTag;
+import com.lees.knowlegeBase.entity.Item;
+import com.lees.knowlegeBase.entity.Tag;
+import com.lees.knowlegeBase.manager.KnowledgeManager;
+import com.lees.knowlegeBase.repository.ItemRepository;
+import com.lees.knowlegeBase.repository.TagRepository;
 
 
 @RestController
 public class KnowledgeController {
 
 	@Autowired
-	KnowledgeItemRepository itemRepository;
-	
-	@Autowired 
-	KnowledgeTagRepository tagRepository;
+	KnowledgeManager knowledgeManager;
 	
 	@RequestMapping(value = "/start")
 	public String startPage() {
 		
-		KnowledgeTag tagA = new KnowledgeTag("Tag A");
+		/*KnowledgeTag tagA = new KnowledgeTag("Tag A");
 		KnowledgeTag tagB = new KnowledgeTag("Tag B");
 		KnowledgeTag tagC = new KnowledgeTag("Tag C");
 		
@@ -52,16 +46,15 @@ public class KnowledgeController {
 		tagB.getKnowledgeItems().add(itemB);
 		
 		itemRepository.save(itemA);
-		itemRepository.save(itemB);
+		itemRepository.save(itemB); */
 		
 		return "Success?";
 	}
 	
 	@RequestMapping(value = "/additem")
-	public String addItem(@RequestParam String itemTitle, @RequestParam String itemContent, @RequestParam String tags) {
+	public String addItem(@RequestParam String itemTitle, @RequestParam String itemContent, @RequestParam String tagList) {
 		
-		//StringTokenizer tokenTags = new StringTokenizer(tags, ";");
-		String[] tagsList = tags.split(";");
+		/*String[] tagsList = tags.split(";");
 		KnowledgeItem itemToAdd = new KnowledgeItem(itemTitle, itemContent);
 		
 		
@@ -76,7 +69,9 @@ public class KnowledgeController {
 			itemRepository.save(itemToAdd);
 		}
 		
-		itemRepository.save(itemToAdd);
+		itemRepository.save(itemToAdd); */
+		
+		knowledgeManager.AddNewItemAndTags(itemTitle, itemContent, tagList);
 		
 		return "Success!";
 	}

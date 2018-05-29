@@ -4,13 +4,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 
@@ -18,9 +16,9 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @Table( name="knowledge_tag")
-@NamedQuery(name = "KnowledgeTag.findByTag",
-query = "select t from KnowledgeTag t where t.tag = :tagString")
-public class KnowledgeTag {
+@NamedQuery(name = "KnowledgeTag.findByTagInternal",
+query = "select t from Tag t where t.tag = :tagString")
+public class Tag {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,13 +26,13 @@ public class KnowledgeTag {
 	private String tag;
 	
 	@ManyToMany(mappedBy="knowledgeItemTags", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-	private Set<KnowledgeItem> knowledgeItems = new HashSet<KnowledgeItem>();
+	private Set<Item> knowledgeItems = new HashSet<Item>();
 	
-	public KnowledgeTag() {
+	public Tag() {
 		
 	}
 		
-	public KnowledgeTag(String tag) {
+	public Tag(String tag) {
 		this.tag = tag;
 	}
 		
@@ -54,11 +52,11 @@ public class KnowledgeTag {
 		this.tag = tag;
 	}
 		
-	public Set<KnowledgeItem> getKnowledgeItems() {
+	public Set<Item> getKnowledgeItems() {
 		return knowledgeItems;
 	}
 	
-	public void setKnowledgeItems(Set<KnowledgeItem> knowledgeItems) {
+	public void setKnowledgeItems(Set<Item> knowledgeItems) {
 		this.knowledgeItems = knowledgeItems;
 	}
 	
