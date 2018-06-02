@@ -10,7 +10,7 @@ import com.lees.knowlegeBase.entity.Tag;
 import com.lees.knowlegeBase.utility.MiscUtility;
 
 @Component
-public class MemoryCacheTagRepository {
+public class MemoryCacheTagRepository implements IMemoryCacheTagRepository {
 
 	Hashtable<String, Integer> tagCache = new Hashtable<>();
 	

@@ -2,7 +2,6 @@ package com.lees.knowlegeBase.utility;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import com.lees.knowlegeBase.entity.Item;
 import com.lees.knowlegeBase.entity.Tag;
 import com.lees.knowlegeBase.repository.ItemRepository;
@@ -11,11 +10,16 @@ import com.lees.knowlegeBase.repository.TagRepository;
 @Component
 public  class MiscUtility {
 	
-	@Autowired
-	ItemRepository itemRepository;
+	private ItemRepository itemRepository;
+	
+	private TagRepository tagRepository;
 	
 	@Autowired
-	TagRepository tagRepository;
+	public MiscUtility(ItemRepository itemRepository, TagRepository tagRepository) {
+		
+		this.itemRepository = itemRepository;
+		this.tagRepository = tagRepository;
+	}
 	
 	public void SeedDatabase() {
 		

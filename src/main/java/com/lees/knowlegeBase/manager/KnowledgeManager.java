@@ -5,26 +5,22 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.lees.knowlegeBase.adapter.KnowledgeRepositoryAdapter;
 import com.lees.knowlegeBase.entity.Item;
 import com.lees.knowlegeBase.entity.Tag;
+import com.lees.knowlegeBase.repository.IMemoryCacheTagRepository;
 import com.lees.knowlegeBase.repository.ItemRepository;
 import com.lees.knowlegeBase.repository.MemoryCacheTagRepository;
 import com.lees.knowlegeBase.repository.TagRepository;
 
 @Component
-public class KnowledgeManager {
+public class KnowledgeManager implements IKnowledgeManager {
 
-	//@Autowired
-	//KnowledgeRepositoryAdapter repositoryAdapter;
-	
 	private ItemRepository itemRepository;
 	private TagRepository tagRepository;
-	private MemoryCacheTagRepository tagCache;
+	private IMemoryCacheTagRepository tagCache;
 	
-	
-	public KnowledgeManager(ItemRepository itemRepository, TagRepository tagRepository, MemoryCacheTagRepository tagCache) {
+	@Autowired
+	public KnowledgeManager(ItemRepository itemRepository, TagRepository tagRepository, IMemoryCacheTagRepository tagCache) {
 		
 		this.itemRepository = itemRepository;
 		this.tagRepository = tagRepository;
@@ -56,7 +52,7 @@ public class KnowledgeManager {
 		return true;
 	}
 	
-	private Tag SaveTag(String tag) {
+	public Tag SaveTag(String tag) {
 		
 		Tag tagToSave = null;
 		
@@ -71,7 +67,7 @@ public class KnowledgeManager {
 		return tagToSave;
 	}
 	
-	private Item SaveItem(String itemTitle, String itemContent, Tag associatedTag ) {
+	public Item SaveItem(String itemTitle, String itemContent, Tag associatedTag) {
 		
 		Item itemToSave = new Item(itemTitle, itemContent);
 		itemToSave.setTitle(itemTitle);
