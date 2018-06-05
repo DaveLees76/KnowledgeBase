@@ -13,7 +13,7 @@ public class Item {
 	private int id;
 	
 	@ManyToMany
-	@JoinTable (name = "Knowledge_KnowledgeItem", joinColumns = @JoinColumn(name = "KnowledgeItem_Id", referencedColumnName = "Id"), 
+	@JoinTable (name = "item_tags", joinColumns = @JoinColumn(name = "KnowledgeItem_Id", referencedColumnName = "Id"), 
 	inverseJoinColumns = @JoinColumn(name = "KnowledgeItem_Tag_Id", referencedColumnName = "Id"))
 	private Set<Tag> knowledgeItemTags = new HashSet<Tag>();
 	

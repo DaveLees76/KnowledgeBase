@@ -1,11 +1,15 @@
 package com.lees.knowlegeBase.manager;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import com.lees.knowlegeBase.entity.Item;
+import com.lees.knowlegeBase.entity.ItemAndTags;
+import com.lees.knowlegeBase.entity.ItemResponse;
 import com.lees.knowlegeBase.entity.Tag;
 import com.lees.knowlegeBase.repository.IMemoryCacheTagRepository;
 import com.lees.knowlegeBase.repository.ItemRepository;
@@ -27,10 +31,14 @@ public class KnowledgeManager implements IKnowledgeManager {
 		this.tagCache = tagCache;
 	}
 
-	public boolean AddNewItemAndTags(String itemTitle, String itemContent, String tags) {
+	public boolean AddNewItemAndTags(ItemAndTags newItemAndTags) {
 		
 		Tag tagToSave = new Tag();
-		String[] tagsList = tags.split(";");
+		Item itemToSave = new Item();
+		String[] tagsList = newItemAndTags.getTags().split(";");
+		
+		itemToSave.setTitle(newItemAndTags.getItemTitle());
+		itemToSave.setContent(newItemAndTags.getItemContent());
 		
 		for(String tag : tagsList) {
 		
@@ -43,13 +51,30 @@ public class KnowledgeManager implements IKnowledgeManager {
 				tagToSave.setTag(tag);
 				tagToSave.setId(tagCache.GetTagId(tag));
 			}
-			
-			SaveItem(itemTitle, itemContent, tagToSave);
+						
+			tagToSave.getKnowledgeItems().add(itemToSave);
+			itemToSave.getKnowledgeTags().add(tagToSave);
 		}
 		
-		//itemRepository.save(itemToAdd);
+		itemRepository.save(itemToSave);
 		
 		return true;
+	}
+	
+	public ArrayList<ItemResponse> getItemsByTag(String tag) {
+		
+		Tag foundTag = new Tag();
+		ArrayList<ItemResponse> foundItems = new ArrayList<ItemResponse>();
+		
+		if (tagCache.ContainsTag(tag)) {
+			foundTag = tagRepository.findById(tagCache.GetTagId(tag));
+			
+			for(Item i : foundTag.getKnowledgeItems()) {
+				foundItems.add(new ItemResponse(i.getTitle(), i.getContent()));
+			}
+		}
+		
+		return foundItems;
 	}
 	
 	public Tag SaveTag(String tag) {

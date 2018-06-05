@@ -15,7 +15,7 @@ import javax.persistence.NamedQuery;
 
 
 @Entity
-@Table( name="knowledge_tag")
+@Table( name="tag")
 @NamedQuery(name = "KnowledgeTag.findByTagInternal",
 query = "select t from Tag t where t.tag = :tagString")
 public class Tag {

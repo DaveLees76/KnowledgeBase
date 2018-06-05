@@ -43,6 +43,16 @@ public class MemoryCacheTagRepository implements IMemoryCacheTagRepository {
 	
 	public int GetTagId (String tag) {
 		
-		return tagCache.get(tag);
+		int id = 0;
+		
+		try {
+		
+			id = tagCache.get(tag);
+		}
+		catch(NullPointerException e) {
+			
+		}
+		
+		return id;
 	}
 }
