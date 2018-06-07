@@ -70,7 +70,7 @@ public class KnowledgeManager implements IKnowledgeManager {
 			foundTag = tagRepository.findById(tagCache.GetTagId(tag));
 			
 			for(Item i : foundTag.getKnowledgeItems()) {
-				foundItems.add(new ItemResponse(i.getTitle(), i.getContent()));
+				foundItems.add(new ItemResponse(i.getTitle(), i.getContent(), i.getId()));
 			}
 		}
 		

@@ -4,10 +4,12 @@ public class ItemResponse {
 
 	private String title;
 	private String content;
+	private int id;
 	
-	public ItemResponse(String title, String content) {
+	public ItemResponse(String title, String content, int id) {
 		this.title = title;
 		this.content = content;
+		this.id = id;
 	}
 	
 	public void setTitle(String title) {
