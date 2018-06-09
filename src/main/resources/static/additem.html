@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="css/knowledgeBase.css">
+<meta charset="utf-8">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	
+$(function(){
+	function processform( e ) {
+		alert(JSON.stringify( { "tags": $('#tags').val(), "itemTitle": $('#title').val(), "itemContent": $('#content').val() } ));
+		$.ajax({
+			url: 'additem',
+			dataType: 'text',
+			type: 'post',
+			contentType: 'application/json; charset=UTF8',
+			data: JSON.stringify( { "tags": $('#tags').val(), "itemTitle": $('#title').val(), "itemContent": $('#content').val() } ),
+			success: function( data, textStatus, jQxhr) {
+				$('#response pre').html( data );
+			},
+			error: function( jqXhr, textStatus, errorThrown ) {
+				console.log( errorThrown );
+			} 
+		});
+		
+		e.preventDefault();
+	}
+	
+    $("#create-content").submit(processform);
+    });
+	
+</script>
+
+
+<title>Insert title here</title>
+</head>
+<body>
+
+<div id="response">
+	<pre></pre>
+</div>
+
+<form id="create-content">
+	<div class="inputfield">
+	<input type="text" id="tags" name="tags" placeholder="Tags" />
+	</div>
+
+	<div class="inputfield">
+	<input type="text" id="title" name="title" placeholder="Title" />
+	</div>
+	
+	<div class="inputfield">
+	<textarea rows="4" cols="50" form="create-content" id="content">
+	</textarea>
+	</div>
+	
+	<button type="submit">Submit</button>
+	
+</form>
+
+</body>
+</html>
