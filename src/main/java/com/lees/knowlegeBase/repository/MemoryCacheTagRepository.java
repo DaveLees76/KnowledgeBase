@@ -1,5 +1,6 @@
 package com.lees.knowlegeBase.repository;
 
+import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Component;
 
 import com.lees.knowlegeBase.entity.Tag;
 import com.lees.knowlegeBase.utility.MiscUtility;
+
+import antlr.collections.Enumerator;
 
 @Component
 public class MemoryCacheTagRepository implements IMemoryCacheTagRepository {
@@ -54,5 +57,9 @@ public class MemoryCacheTagRepository implements IMemoryCacheTagRepository {
 		}
 		
 		return id;
+	}
+	
+	public Enumeration<String> getAllTags() {
+		return tagCache.keys();
 	}
 }

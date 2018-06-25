@@ -17,5 +17,5 @@ public interface IKnowledgeManager {
 	
 	Tag SaveTag(String tag);
 	
-	Item SaveItem(String itemTitle, String itemContent, Tag associatedTag);
+	//Item SaveItem(String itemTitle, String itemContent, Tag associatedTag);
 }

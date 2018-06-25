@@ -1,6 +1,9 @@
-package com.lees.knowlegeBase.manager;
+	package com.lees.knowlegeBase.manager;
+
+import static org.assertj.core.api.Assertions.in;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.List;
 
@@ -77,6 +80,18 @@ public class KnowledgeManager implements IKnowledgeManager {
 		return foundItems;
 	}
 	
+	public ArrayList<String> getAllTags() {
+		
+		ArrayList<String> allTags = new ArrayList<String>();	
+		Enumeration<String> tagEnumerator = tagCache.getAllTags();
+		
+		while (tagEnumerator.hasMoreElements()) {
+			allTags.add((String)tagEnumerator.nextElement());
+		}
+		
+		return allTags;
+	}
+	
 	public Tag SaveTag(String tag) {
 		
 		Tag tagToSave = null;
@@ -92,7 +107,7 @@ public class KnowledgeManager implements IKnowledgeManager {
 		return tagToSave;
 	}
 	
-	public Item SaveItem(String itemTitle, String itemContent, Tag associatedTag) {
+	/*public Item SaveItem(String itemTitle, String itemContent, Tag associatedTag) {
 		
 		Item itemToSave = new Item(itemTitle, itemContent);
 		itemToSave.setTitle(itemTitle);
@@ -104,5 +119,5 @@ public class KnowledgeManager implements IKnowledgeManager {
 		
 		return itemToSave;
 		
-	}
+	}*/
 }

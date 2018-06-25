@@ -2,68 +2,122 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Set DIV Height to 100% Using CSS</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+
+
+</script>
+
+
+<title>KnowledgeBase</title>
 <style type="text/css">
-   html, body {
-    	height: 100%;
-		margin: 0px;
-	}
-    
-  .flex-container {
-  display: flex;
-  align-items: stretch;
-  background-color: #f1f1f1;
-  flex-flow: row wrap;
-  height: 20%;
-  }
-  
-  .flex-container > div {
-  background-color: black;
-  color: white;
-  width: 100px;
-  text-align: center;
-  line-height: 75px;
-  font-size: 30px;
-  
-  }
-    
-	.flex-container2 {
-		height: 80%;
-        display: flex;
-  		align-items: stretch;
-  		background-color: #f1f1f1;
-	}
-    
-    .menu {
-  background-color: grey;
-  color: white;
-  
-  text-align: center;
-  line-height: 75px;
-  font-size: 30px;
-  height: 100%;
-	}
-    
-    .content {
-  background-color: white;
-  color: white;
-  
-  text-align: center;
-  line-height: 75px;
-  font-size: 30px;
-  height: 100%;
-	}
-    
+html, body {
+	height: 100%;
+	margin: 0px;
+}
+
+.flex-container {
+	display: flex;
+	align-items: stretch;
+	background-color: #f1f1f1;
+	flex-flow: row wrap;
+	height: 10%;
+}
+
+.flex-container>div {
+	flex-basis: 100%;
+	background-color: black;
+	color: white;
+	width: 100%;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 20px;
+}
+
+.flex-container2 {
+	height: 90%;
+	display: flex;
+	align-items: stretch;
+	/*background-color: #f1f1f1;*/
+}
+
+.menu {
+	flex-basis: 10%;
+	background-color: grey;
+	color: white;
+	float: left;
+	/*line-height: 75px;*/
+	font-size: 30px;
+	height: 100%;
+}
+
+.content {
+	background-color: white;
+	color: white;
+	text-align: center;
+	line-height: 75px;
+	font-size: 30px;
+	height: 100%;
+}
+
+.content>iframe {
+	height: 100%;
+	width: 100%;
+}
+
+.leftmenuitem {
+	float: left;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+
+a:link {
+    color: lightblue;
+    text-decoration: none;
+}
+
+a:visited {
+    color: lightblue;
+    text-decoration: none;
+}
+
+a:hover {
+    color: yellow;
+    text-decoration: none;
+}
+
+a:active {
+    color: yellow;
+    text-decoration: none;
+}
+
+
 </style>
 </head>
 <body>
-<div class="flex-container">
-  <div style="flex-basis:100%">1</div>
-</div>
+	<div class="flex-container">
+		<div>
+			<h1>KnowledgeBase</h1>
+		</div>
+	</div>
 
-    <div class="flex-container2">
-    	<div class="menu"; style="flex-basis:15%">2</div>
-  		<div class="content"; style="flex-basis:85%">3</div>
-    </div>
+	<div class="flex-container2">
+		<div class="menu">
+			<ul>
+			    <li class="leftmenuitem"><a href="additem.html" target="framecontent">Add Item</a></li>
+				<li class="leftmenuitem"><a href="itemsearch.html" target="framecontent">Search</a></li>
+			</ul>
+		</div>
+
+
+		<div class="content" style="flex-basis: 90%">
+			<iframe name="framecontent"></iframe>
+		</div>
+	</div>
 </body>
-</html>                            
+</html>
