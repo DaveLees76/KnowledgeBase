@@ -1,11 +1,7 @@
-	package com.lees.knowlegeBase.manager;
-
-import static org.assertj.core.api.Assertions.in;
+package com.lees.knowlegeBase.manager;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.HashSet;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,7 +12,6 @@ import com.lees.knowlegeBase.entity.ItemResponse;
 import com.lees.knowlegeBase.entity.Tag;
 import com.lees.knowlegeBase.repository.IMemoryCacheTagRepository;
 import com.lees.knowlegeBase.repository.ItemRepository;
-import com.lees.knowlegeBase.repository.MemoryCacheTagRepository;
 import com.lees.knowlegeBase.repository.TagRepository;
 
 @Component
