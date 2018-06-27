@@ -12,9 +12,25 @@ html,body {
 	padding: 0px;
 }
 
+.mainflex {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	height: 100%;
+}
+
+
 .title {
-	text-align: left;
-	right-padding: 30%;
+	text-align: left;	
+}
+
+.title>h1 {
+	padding-left: 10px;
+	color: DarkSlateGray;
+}
+
+#submititem {
+	margin-left: 10px;
 }
 
 </style>
@@ -52,32 +68,28 @@ $(function(){
 </head>
 <body>
 
-<div id="response">
-	<pre></pre>
-</div>
-
 <div>
 
-<div class="title">	
-	<h1>Add a new item</h1>
-</div>
-
-<form id="create-content">
-	<div class="inputfield">
-	<input type="text" id="tags" name="tags" placeholder="Tags" />
+	<div class="title">	
+		<h1>Add a new item</h1>
 	</div>
 
-	<div class="inputfield">
-	<input type="text" id="title" name="title" placeholder="Title" />
-	</div>
+	<form id="create-content">
+		<div class="inputfield">
+			<input type="text" id="tags" name="tags" placeholder="Tags" />
+		</div>
+
+		<div class="inputfield">
+			<input type="text" id="title" name="title" placeholder="Title" />
+		</div>
 	
-	<div class="inputfield">
-	<textarea rows="10" cols="100" form="create-content" id="content" placeholder="Content"></textarea>
-	</div>
+		<div class="inputfield">
+			<textarea rows="10" cols="100" form="create-content" id="content" placeholder="Content"></textarea>
+		</div>
 	
-	<button type="submit">Submit</button>
+		<button id="submititem" type="submit">Submit</button>
 	
-</form>
+	</form>
 </div>
 </body>
 </html>
