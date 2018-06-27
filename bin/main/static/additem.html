@@ -14,7 +14,7 @@ html,body {
 
 .mainflex {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	flex-wrap: wrap;
 	height: 100%;
 }
@@ -31,6 +31,18 @@ html,body {
 
 #submititem {
 	margin-left: 10px;
+	background-color: lightblue;
+	font-size: 16px;
+	border-radius: 12px;
+	padding: 15px 20px;
+	transition-duration: 0.4s;
+	border: none;
+	outline: none;
+	
+}
+
+#submititem:hover {
+	background-color: lightgreen;
 }
 
 </style>
@@ -68,7 +80,7 @@ $(function(){
 </head>
 <body>
 
-<div>
+<div class="mainflex">
 
 	<div class="title">	
 		<h1>Add a new item</h1>
