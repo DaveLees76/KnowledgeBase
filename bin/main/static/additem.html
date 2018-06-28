@@ -10,6 +10,7 @@ html,body {
 	border: 0px;
 	margin: 0px;
 	padding: 0px;
+	font-family: Arial;
 }
 
 .mainflex {
@@ -31,18 +32,37 @@ html,body {
 
 #submititem {
 	margin-left: 10px;
-	background-color: lightblue;
+	background-color: #80dfff;
 	font-size: 16px;
 	border-radius: 12px;
 	padding: 15px 20px;
 	transition-duration: 0.4s;
 	border: none;
 	outline: none;
-	
+	cursor: pointer;
+	box-shadow: 0 9px #999;
+}
+
+#submititem:disabled {
+	opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #80dfff;
+}
+
+#submititem:disabled:hover {
+	opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #80dfff;
 }
 
 #submititem:hover {
-	background-color: lightgreen;
+	background-color: #0099cc;
+}
+
+#submititem:active {
+	background-color: #0099cc;
+	box-shadow: 0 5px #666;
+  	transform: translateY(2px);
 }
 
 </style>
@@ -51,6 +71,7 @@ html,body {
 <script>
 	
 $(function(){
+	
 	function processform( e ) {
 		alert(JSON.stringify( { "tags": $('#tags').val(), "itemTitle": $('#title').val(), "itemContent": $('#content').val() } ));
 		$.ajax({
@@ -69,8 +90,22 @@ $(function(){
 		
 		e.preventDefault();
 		}
+	
+	function processkeypress ( e ) {
+		
+		if ( ($('#tags').val() != "" ) && ($('#title').val() != "" ) && ($('#content').val() != "" ) ) {
+			$('#submititem').removeAttr('disabled');
+		}
+		else {
+			$('#submititem').prop("disabled", true);
+		}
+	}
 		
     $("#create-content").submit(processform);
+    
+    $('#tags').keyup(processkeypress);
+    $('#title').keyup(processkeypress);
+    $('#content').keyup(processkeypress);
     });
 	
 </script>
@@ -99,7 +134,7 @@ $(function(){
 			<textarea rows="10" cols="100" form="create-content" id="content" placeholder="Content"></textarea>
 		</div>
 	
-		<button id="submititem" type="submit">Submit</button>
+		<button id="submititem" type="submit" disabled>Submit</button>
 	
 	</form>
 </div>
