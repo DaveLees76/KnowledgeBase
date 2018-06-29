@@ -3,70 +3,6 @@
 <head>
 <link rel="stylesheet" href="css/knowledgeBase.css">
 <meta charset="utf-8">
-
-<style>
-
-html,body {
-	border: 0px;
-	margin: 0px;
-	padding: 0px;
-	font-family: Arial;
-}
-
-.mainflex {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	height: 100%;
-}
-
-
-.title {
-	text-align: left;	
-}
-
-.title>h1 {
-	padding-left: 10px;
-	color: DarkSlateGray;
-}
-
-#submititem {
-	margin-left: 10px;
-	background-color: #80dfff;
-	font-size: 16px;
-	border-radius: 12px;
-	padding: 15px 20px;
-	transition-duration: 0.4s;
-	border: none;
-	outline: none;
-	cursor: pointer;
-	box-shadow: 0 9px #999;
-}
-
-#submititem:disabled {
-	opacity: 0.6;
-    cursor: not-allowed;
-    background-color: #80dfff;
-}
-
-#submititem:disabled:hover {
-	opacity: 0.6;
-    cursor: not-allowed;
-    background-color: #80dfff;
-}
-
-#submititem:hover {
-	background-color: #0099cc;
-}
-
-#submititem:active {
-	background-color: #0099cc;
-	box-shadow: 0 5px #666;
-  	transform: translateY(2px);
-}
-
-</style>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 	
@@ -134,7 +70,7 @@ $(function(){
 			<textarea rows="10" cols="100" form="create-content" id="content" placeholder="Content"></textarea>
 		</div>
 	
-		<button id="submititem" type="submit" disabled>Submit</button>
+		<button id="submititem" type="submit" disabled>Save Item</button>
 	
 	</form>
 </div>

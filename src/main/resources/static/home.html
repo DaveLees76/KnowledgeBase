@@ -26,13 +26,28 @@ html, body {
 .menuflex {
 	display: flex;
 	flex-direction: column;
+	align-items:center;
 }
 
-.menuflex>a {
-	margin-left: 15px;
+a {
+	border: 2px solid #ffff66;
+	background-color: #ffff66;
+	width: 70%;
 	margin-top: 15px;
+	text-align: center;
 	color: DarkSlateGray;
-	font-size: 20px;
+	font-size: 16px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 5px;
+	box-shadow: 0 9px #999;
+	transition-duration: 0.4s;
+}
+
+a:active {
+	background-color: #e6e600;
+	box-shadow: 0 5px #666;
+  	transform: translateY(2px);
 }
 
 .contentflex {
@@ -40,15 +55,15 @@ html, body {
 }
 
 #header {
-	background-color: darkblue;
+	background-color: #00ace6;
 	flex-basis: 100%;
 	height: 10%;
 	font-size: 40px;
-	color: white;
+	color: DarkSlateGray;
 }
 
 #menu {
-	background-color: lightblue;
+	background-color: #80dfff;
 	flex-basis: 10%;
 	height: 90%;
 }
