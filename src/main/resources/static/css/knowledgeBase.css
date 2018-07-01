@@ -72,14 +72,33 @@ input[type=text] {
     background-color: #ffff66;
 }
 
-#submititem:hover {
-	background-color: #e6e600;
-}
-
 #submititem:active {
-	background-color: #e6e600;
+	background-color: #ffff00;
 	box-shadow: 0 5px #666;
   	transform: translateY(2px);
+}
+
+.resultflex {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+#results {
+	margin-top: 30px;
+}
+
+#resultrow {
+	display: flex;
+	flex-direction: column;
+	font-size: 16px;
+	color: blue;
+}
+
+#resultcell {
+	width: 30px;
+	text-align: left;
+}
 
 
 

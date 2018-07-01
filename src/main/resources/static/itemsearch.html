@@ -3,70 +3,67 @@
 <head>
 <link rel="stylesheet" href="css/knowledgeBase.css">
 <meta charset="ISO-8859-1">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-	
-$(function(){
-	
-	function processform( e ) {
-		alert(JSON.stringify( { "tags": $('#tags').val(), "itemTitle": $('#title').val(), "itemContent": $('#content').val() } ));
-		$.ajax({
-			url: 'additem',
-			dataType: 'text',
-			type: 'post',
-			contentType: 'application/json; charset=UTF8',
-			data: JSON.stringify( { "tags": $('#tags').val(), "itemTitle": $('#title').val(), "itemContent": $('#content').val() } ),
-			success: function( data, textStatus, jQxhr) {
-				$('#response pre').html( data );
-			},
-			error: function( jqXhr, textStatus, errorThrown ) {
-				console.log( errorThrown );
-			} 
-		});
-		
-		e.preventDefault();
+	$(function() {
+
+		function processform(e) {
+			$.get('getitemsbytag', {
+				tag : $('#tags').val()
+			}, function(data) {
+				var i;
+				if (data.length > 0) {
+					$('#results').append("<div>Title    Content</div>");
+					for (i = 0; i < data.length; i++) {
+
+						$('#results').append("<div id=\"resultrow\">" + data[i].title + " " + data[i].content + "</div>");
+					}
+				}
+			});
+			e.preventDefault();
 		}
-	
-	function processkeypress ( e ) {
-		
-		if ( ($('#tags').val() != "" ) ) {
-			$('#submititem').removeAttr('disabled');
+
+		function processkeypress(e) {
+			if (($('#tags').val() != "") && ($('#title').val() != "")
+					&& ($('#content').val() != "")) {
+				$('#submititem').removeAttr('disabled');
+			} else {
+				$('#submititem').prop("disabled", true);
+			}
 		}
-		else {
-			$('#submititem').prop("disabled", true);
-		}
-	}
-		
-    $("#find-content").submit(processform);
-    
-    $('#tags').keyup(processkeypress);
-    });
-	
+
+		$("#find-content").submit(processform);
+		$('#tags').keyup(processkeypress);
+
+	});
 </script>
 
 <style type="text/css">
-
 </style>
 
 <title>Search for item</title>
 </head>
 <body>
 
-<div class="mainflex">
+	<div class="mainflex">
 
-	<div class="title">	
-		<h1>Find an item</h1>
-	</div>
-
-	<form id="find-content">
-		<div class="inputfield">
-			<input type="text" id="tags" name="tags" placeholder="Tags" />
+		<div class="title">
+			<h1>Find an item</h1>
 		</div>
-			
-		<button id="submititem" type="submit" disabled>Find Item</button>
-	
-	</form>
-</div>
+
+		<div id="formdiv">
+			<form id="find-content">
+				<div class="inputfield">
+					<input type="text" id="tags" name="tags" placeholder="Tag" />
+				</div>
+
+				<button id="submititem" type="submit" disabled>Find Item</button>
+
+			</form>
+		</div>
+		<div id="results"></div>
+	</div>
 
 </body>
 </html>
