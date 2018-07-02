@@ -3,47 +3,51 @@
 <head>
 <link rel="stylesheet" href="css/knowledgeBase.css">
 <meta charset="utf-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-	
-$(function(){
-	
-	function processform( e ) {
-		alert(JSON.stringify( { "tags": $('#tags').val(), "itemTitle": $('#title').val(), "itemContent": $('#content').val() } ));
-		$.ajax({
-			url: 'additem',
-			dataType: 'text',
-			type: 'post',
-			contentType: 'application/json; charset=UTF8',
-			data: JSON.stringify( { "tags": $('#tags').val(), "itemTitle": $('#title').val(), "itemContent": $('#content').val() } ),
-			success: function( data, textStatus, jQxhr) {
-				$('#response pre').html( data );
-			},
-			error: function( jqXhr, textStatus, errorThrown ) {
-				console.log( errorThrown );
-			} 
-		});
-		
-		e.preventDefault();
+	$(function() {
+
+		function processform(e) {
+			$.ajax({
+				url : 'additem',
+				dataType : 'text',
+				type : 'post',
+				contentType : 'application/json; charset=UTF8',
+				data : JSON.stringify({
+					"tags" : $('#tags').val(),
+					"itemTitle" : $('#title').val(),
+					"itemContent" : $('#content').val()
+				}),
+				success : function(data, textStatus, jQxhr) {
+					$('#response pre').html(data);
+					$('.savemessage').fadeIn(3000);
+					$('.savemessage').fadeOut(3000);
+				},
+				error : function(jqXhr, textStatus, errorThrown) {
+					console.log(errorThrown);
+				}
+			});
+
+			e.preventDefault();
 		}
-	
-	function processkeypress ( e ) {
-		
-		if ( ($('#tags').val() != "" ) && ($('#title').val() != "" ) && ($('#content').val() != "" ) ) {
-			$('#submititem').removeAttr('disabled');
+
+		function processkeypress(e) {
+
+			if (($('#tags').val() != "") && ($('#title').val() != "")
+					&& ($('#content').val() != "")) {
+				$('#submititem').removeAttr('disabled');
+			} else {
+				$('#submititem').prop("disabled", true);
+			}
 		}
-		else {
-			$('#submititem').prop("disabled", true);
-		}
-	}
-		
-    $("#create-content").submit(processform);
-    
-    $('#tags').keyup(processkeypress);
-    $('#title').keyup(processkeypress);
-    $('#content').keyup(processkeypress);
-    });
-	
+
+		$("#create-content").submit(processform);
+
+		$('#tags').keyup(processkeypress);
+		$('#title').keyup(processkeypress);
+		$('#content').keyup(processkeypress);
+	});
 </script>
 
 
@@ -51,28 +55,28 @@ $(function(){
 </head>
 <body>
 
-<div class="mainflex">
+	<div class="mainflex">
 
-	<div class="title">	
-		<h1>Add a new item</h1>
+		<div class="title">
+			<h1>Add a new item</h1>
+		</div>
+
+		<form id="create-content">
+			<div class="inputfield">
+				<input type="text" id="tags" name="tags" placeholder="Tags" />
+			</div>
+
+			<div class="inputfield">
+				<input type="text" id="title" name="title" placeholder="Title" />
+			</div>
+
+			<div class="inputfield">
+				<textarea rows="10" cols="100" form="create-content" id="content"
+					placeholder="Content"></textarea>
+			</div>
+
+			<div class="buttondiv"><button id="submititem" type="submit" disabled>Save Item</button><span class="savemessage">Saved</span></div>
+		</form>
 	</div>
-
-	<form id="create-content">
-		<div class="inputfield">
-			<input type="text" id="tags" name="tags" placeholder="Tags" />
-		</div>
-
-		<div class="inputfield">
-			<input type="text" id="title" name="title" placeholder="Title" />
-		</div>
-	
-		<div class="inputfield">
-			<textarea rows="10" cols="100" form="create-content" id="content" placeholder="Content"></textarea>
-		</div>
-	
-		<button id="submititem" type="submit" disabled>Save Item</button>
-	
-	</form>
-</div>
 </body>
 </html>

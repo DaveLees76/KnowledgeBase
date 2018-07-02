@@ -1,5 +1,10 @@
 package com.lees.knowlegeBase.entity;
 
+import java.util.ArrayList;
+import java.util.Set;
+
+import springfox.documentation.service.Tags;
+
 public class ItemResponse {
 
 	private String title;
@@ -9,7 +14,7 @@ public class ItemResponse {
 	public ItemResponse(String title, String content, int id) {
 		this.title = title;
 		this.content = content;
-		this.id = id;
+		this.setId(id);
 	}
 	
 	public void setTitle(String title) {
@@ -27,5 +32,12 @@ public class ItemResponse {
 	public String getContent() {
 		return content;
 	}
-	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}	
 }

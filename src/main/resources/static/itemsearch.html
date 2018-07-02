@@ -9,15 +9,16 @@
 	$(function() {
 
 		function processform(e) {
+			$('#results').empty();
 			$.get('getitemsbytag', {
 				tag : $('#tags').val()
-			}, function(data) {
+			}, function(data) {				
 				var i;
 				if (data.length > 0) {
-					$('#results').append("<div>Title    Content</div>");
+					$('#results').append("<div class=\"resultrow\"> <div class=\"resultcell\">Title</div>    <div class=\"resultcell\">Content</div></div>");
 					for (i = 0; i < data.length; i++) {
 
-						$('#results').append("<div id=\"resultrow\">" + data[i].title + " " + data[i].content + "</div>");
+						$('#results').append("<div class=\"resultrow\"> <div class=\"resultcell\">" + data[i].title + "</div>    <div class=\"resultcell\">" + data[i].content + "</div></div>");
 					}
 				}
 			});

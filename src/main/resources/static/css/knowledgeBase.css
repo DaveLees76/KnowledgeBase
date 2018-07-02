@@ -88,17 +88,29 @@ input[type=text] {
 	margin-top: 30px;
 }
 
-#resultrow {
+.resultrow {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	font-size: 16px;
 	color: blue;
 }
 
-#resultcell {
-	width: 30px;
+.resultcell {
+	width: 100px;
 	text-align: left;
 }
 
+.buttondiv {
+	display: flex;
+	flex-direction: row;
+	color: red;
+	font-size: 26px;
+	align-items: center;
+	width: 300px;
+}
+
+.savemessage {
+	display: none;
+}
 
 
