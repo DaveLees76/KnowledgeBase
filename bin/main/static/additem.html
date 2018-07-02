@@ -21,8 +21,8 @@
 				}),
 				success : function(data, textStatus, jQxhr) {
 					$('#response pre').html(data);
-					$('.savemessage').fadeIn(3000);
-					$('.savemessage').fadeOut(3000);
+					$('.savemessage').fadeIn(2000);
+					$('.savemessage').fadeOut(500);
 				},
 				error : function(jqXhr, textStatus, errorThrown) {
 					console.log(errorThrown);
@@ -43,10 +43,10 @@
 		}
 
 		$("#create-content").submit(processform);
-
 		$('#tags').keyup(processkeypress);
 		$('#title').keyup(processkeypress);
 		$('#content').keyup(processkeypress);
+		$('#tags').focus();
 	});
 </script>
 
