@@ -18,7 +18,7 @@
 					$('#results').append("<div class=\"resultrow\"> <div class=\"resultheaderowtag\">Tags</div>    <div class=\"resultheaderowtitle\">Title</div></div>");
 					for (i = 0; i < data.length; i++) {
 						var tags = data[i].tags.toString();
-						$('#results').append("<div class=\"resultrow\"> <div class=\"resultcelltag\">" + tags + "</div>    <div class=\"resultcelltitle\">" + data[i].title + "</div></div>");
+						$('#results').append("<div class=\"resultrow\"> <div class=\"resultcelltag\">" + tags + "</div>    <div class=\"resultcelltitle\" id = \"" + data[i].id + "\">" + data[i].title + "</div></div>");
 					}
 				}
 			});
@@ -36,7 +36,12 @@
 
 		$("#find-content").submit(processform);
 		$('#tags').keyup(processkeypress);
-
+		$("#results").on("mouseover", ".resultcelltitle", function(){
+			$(this).css("background-color", "#ffff66")
+		});
+		$("#results").on("mouseout", ".resultcelltitle", function(){
+			$(this).css("background-color", "white")
+		});
 	});
 </script>
 
