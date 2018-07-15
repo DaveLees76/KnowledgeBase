@@ -6,4 +6,5 @@ import com.lees.knowlegeBase.entity.Item;
 
 public interface ItemRepository extends CrudRepository<Item, Integer> {
 
+	Item findById(int id);
 }

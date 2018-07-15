@@ -18,6 +18,7 @@ public class Item {
 	private Set<Tag> knowledgeItemTags = new HashSet<Tag>();
 	
 	private String title;
+	@Column(length=5000)
 	private String content;
 	
 	

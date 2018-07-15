@@ -2,6 +2,7 @@ package com.lees.knowlegeBase.manager;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -102,17 +103,15 @@ public class KnowledgeManager implements IKnowledgeManager {
 		return tagToSave;
 	}
 	
-	/*public Item SaveItem(String itemTitle, String itemContent, Tag associatedTag) {
+	public ItemResponse getItemById(int id) {
 		
-		Item itemToSave = new Item(itemTitle, itemContent);
-		itemToSave.setTitle(itemTitle);
-		itemToSave.setContent(itemContent);
-		
-		itemToSave.getKnowledgeTags().add(associatedTag);
-		associatedTag.getKnowledgeItems().add(itemToSave);
-		itemRepository.save(itemToSave);
-		
-		return itemToSave;
-		
-	}*/
+		 Item foundItem = itemRepository.findById(id);
+		 ItemResponse returnItem = new ItemResponse();
+		 
+		 if (foundItem != null) {
+			 returnItem.setValuesFromItem(foundItem);
+		 }
+		 
+		 return returnItem;
+	}
 }

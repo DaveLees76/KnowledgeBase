@@ -12,4 +12,6 @@ public interface IKnowledgeManager {
 	ArrayList<ItemResponse> getItemsByTag(String tag);
 	
 	Tag SaveTag(String tag);
+	
+	ItemResponse getItemById(int id);
 }

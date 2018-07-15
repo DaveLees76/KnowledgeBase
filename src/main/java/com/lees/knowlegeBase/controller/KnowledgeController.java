@@ -35,4 +35,10 @@ public class KnowledgeController {
 
 		return knowledgeManager.getItemsByTag(tag);
 	}
+	
+	@RequestMapping(value = "/getitembyid", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ItemResponse getItemById(int id) {
+		
+		return knowledgeManager.getItemById(id);
+	}
 }

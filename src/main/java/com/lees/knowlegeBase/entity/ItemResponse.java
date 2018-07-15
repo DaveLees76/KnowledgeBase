@@ -21,6 +21,23 @@ public class ItemResponse {
 		}
 	}
 	
+	public ItemResponse() {
+		this.title = "";
+		this.content = "";
+		this.id = -1;
+		this.tags = new ArrayList<String>();
+	}
+	
+	public void setValuesFromItem(Item item) {
+		this.title = item.getTitle();
+		this.content = item.getContent();
+		this.id = item.getId();
+		
+		for(Tag t : item.getKnowledgeTags()) {
+			tags.add(t.getTag());
+		}
+	}
+	
 	public void setTitle(String title) {
 		this.title = title;
 	}

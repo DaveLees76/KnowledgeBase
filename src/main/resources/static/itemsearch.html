@@ -19,6 +19,7 @@
 					for (i = 0; i < data.length; i++) {
 						var tags = data[i].tags.toString();
 						$('#results').append("<div class=\"resultrow\"> <div class=\"resultcelltag\">" + tags + "</div>    <div class=\"resultcelltitle\" id = \"" + data[i].id + "\">" + data[i].title + "</div></div>");
+						$('#results').append("<div class=\"resultrow\"> <div class=\"resultcellcontent\" id = \"resultcell" + data[i].id + "\"></div></div>")
 					}
 				}
 			});
@@ -33,15 +34,29 @@
 				$('#submititem').prop("disabled", true);
 			}
 		}
+		
+		function processtitleclick(e) {
+			$('.resultcellcontent').css({"display": "none"});
+			$.get('getitembyid', {
+				id : $(this).attr('id')
+				}, function(data) {
+					var contentlocator = ".resultcellcontent#" + data.id;
+					$('#resultcell'+data.id).html(data.content);
+					
+					$('#resultcell'+data.id).slideDown('5000');
+				});
+			e.preventDefault();
+		}
 
 		$("#find-content").submit(processform);
 		$('#tags').keyup(processkeypress);
 		$("#results").on("mouseover", ".resultcelltitle", function(){
-			$(this).css("background-color", "#ffff66")
+			$(this).css({"background-color": "#ffff66", "cursor": "pointer"})
 		});
 		$("#results").on("mouseout", ".resultcelltitle", function(){
-			$(this).css("background-color", "white")
+			$(this).css({"background-color": "white", "cursor": "default"})
 		});
+		$("#results").on("click", ".resultcelltitle", processtitleclick)
 	});
 </script>
 
@@ -52,7 +67,7 @@
 </head>
 <body>
 
-	<div class="mainflex"></div>
+	<div class="mainflex">
 	
 		<div class="title">
 			<h1>Find an item</h1>
