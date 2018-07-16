@@ -34,21 +34,22 @@ public class KnowledgeManager implements IKnowledgeManager {
 		
 		Tag tagToSave = new Tag();
 		Item itemToSave = new Item();
-		String[] tagsList = newItemAndTags.getTags().split(";");
+		String[] tagsList = newItemAndTags.getTags().split(",");
 		
 		itemToSave.setTitle(newItemAndTags.getItemTitle());
 		itemToSave.setContent(newItemAndTags.getItemContent());
 		
 		for(String tag : tagsList) {
-		
-			if (!tagCache.ContainsTag(tag)) {
+			String trimmedTag = tag.toLowerCase().trim();
 			
-				tagToSave = SaveTag(tag);
+			if (!tagCache.ContainsTag(trimmedTag)) {
+			
+				tagToSave = SaveTag(trimmedTag);
 				tagCache.AddTag(tagToSave);				
 			}
 			else {
-				tagToSave.setTag(tag);
-				tagToSave.setId(tagCache.GetTagId(tag));
+				tagToSave.setTag(trimmedTag);
+				tagToSave.setId(tagCache.GetTagId(trimmedTag));
 			}
 						
 			tagToSave.getKnowledgeItems().add(itemToSave);
@@ -64,9 +65,10 @@ public class KnowledgeManager implements IKnowledgeManager {
 		
 		Tag foundTag = new Tag();
 		ArrayList<ItemResponse> foundItems = new ArrayList<ItemResponse>();
+		String trimmedTag = tag.toLowerCase().trim();
 		
-		if (tagCache.ContainsTag(tag)) {
-			foundTag = tagRepository.findById(tagCache.GetTagId(tag));
+		if (tagCache.ContainsTag(trimmedTag)) {
+			foundTag = tagRepository.findById(tagCache.GetTagId(trimmedTag));
 			
 			for(Item i : foundTag.getKnowledgeItems()) {
 				foundItems.add(new ItemResponse(i.getTitle(), i.getContent(), i.getId(), i.getKnowledgeTags()));

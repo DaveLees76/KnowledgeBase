@@ -2,6 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="css/knowledgeBase.css">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <meta charset="ISO-8859-1">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -22,6 +23,9 @@
 						$('#results').append("<div class=\"resultrow\"> <div class=\"resultcellcontent\" id = \"resultcell" + data[i].id + "\"></div></div>")
 					}
 				}
+				else {
+					$('#results').append("<div class=\"noresults\">No results</div>");
+				}
 			});
 			e.preventDefault();
 		}
@@ -36,22 +40,30 @@
 		}
 		
 		function processtitleclick(e) {
-			$('.resultcellcontent').css({"display": "none"});
-			$.get('getitembyid', {
-				id : $(this).attr('id')
-				}, function(data) {
-					var contentlocator = ".resultcellcontent#" + data.id;
-					$('#resultcell'+data.id).html(data.content);
-					
-					$('#resultcell'+data.id).slideDown('5000');
-				});
+			var id =  $(this).attr('id');
+			var resultselector = $('#resultcell'+ id);
+			
+			if ( ($(resultselector).css("display")) == 'block') {								
+				$(resultselector).slideUp('5000');
+			}
+			else {
+				$('.resultcellcontent').slideUp('5000');
+				$.get('getitembyid', {
+					id : $(this).attr('id')
+					}, function(data) {
+						var contentlocator = ".resultcellcontent#" + data.id;
+						$('#resultcell'+data.id).html(data.content);
+						
+						$('#resultcell'+data.id).slideDown('5000');
+					});
+			}										
 			e.preventDefault();
 		}
 
 		$("#find-content").submit(processform);
 		$('#tags').keyup(processkeypress);
 		$("#results").on("mouseover", ".resultcelltitle", function(){
-			$(this).css({"background-color": "#ffff66", "cursor": "pointer"})
+			$(this).css({"background-color": "#ffff80", "cursor": "pointer"})
 		});
 		$("#results").on("mouseout", ".resultcelltitle", function(){
 			$(this).css({"background-color": "white", "cursor": "default"})
@@ -70,7 +82,7 @@
 	<div class="mainflex">
 	
 		<div class="title">
-			<h1>Find an item</h1>
+			Find an item
 		</div>
 
 		<div id="formdiv">

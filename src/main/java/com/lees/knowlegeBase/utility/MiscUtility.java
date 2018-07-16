@@ -23,19 +23,19 @@ public  class MiscUtility {
 	
 	public void SeedDatabase() {
 		
-		Tag tagA = new Tag("Tag A");
-		Tag tagB = new Tag("Tag B");
-		Tag tagC = new Tag("Tag C");
+		Tag tagA = new Tag("passwords");
+		Tag tagB = new Tag("servers");
+		//Tag tagC = new Tag("Tag C");
 		
-		Item itemA = new Item("Title A1", "Content A1");
-		Item itemB = new Item("Title A2", "Content A2");
+		Item itemA = new Item("Password for Database", "Here is the database password");
+		Item itemB = new Item("Password for the Server", "Here is the password for the server");
 		
 		tagRepository.save(tagA);
 		tagRepository.save(tagB);
-		tagRepository.save(tagC);
+		//tagRepository.save(tagC);
 		
 		itemA.getKnowledgeTags().add(tagA);
-		itemA.getKnowledgeTags().add(tagC);
+		itemA.getKnowledgeTags().add(tagB);
 		
 		itemB.getKnowledgeTags().add(tagA);
 		itemB.getKnowledgeTags().add(tagB);
@@ -43,7 +43,7 @@ public  class MiscUtility {
 		tagA.getKnowledgeItems().add(itemA);
 		tagA.getKnowledgeItems().add(itemB);
 		
-		tagC.getKnowledgeItems().add(itemA);
+		tagB.getKnowledgeItems().add(itemA);
 		tagB.getKnowledgeItems().add(itemB);
 		
 		itemRepository.save(itemA);

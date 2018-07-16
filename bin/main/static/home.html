@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
 <style>
 html, body {
@@ -21,17 +22,19 @@ html, body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .menuflex {
 	display: flex;
 	flex-direction: column;
 	align-items:center;
+	font-family: 'Montserrat', sans-serif;
 }
 
 a {
-	border: 2px solid #ffff66;
-	background-color: #ffff66;
+	border: 2px solid #ffff80;
+	background-color: #ffff80 ;
 	width: 70%;
 	margin-top: 15px;
 	text-align: center;
@@ -47,8 +50,8 @@ a {
 }
 
 a:active {
-	background-color: #ffff00;
-	border: 2px solid #ffff00;
+	background-color: #ffff66;
+	border: 2px solid #ffff66;
 	box-shadow: 0 5px #666;
   	transform: translateY(2px);
 }
@@ -58,15 +61,15 @@ a:active {
 }
 
 #header {
-	background-color: #00ace6;
+	background-color: #c38888;
 	flex-basis: 100%;
 	height: 10%;
-	font-size: 40px;
+	font-size: 60px;
 	color: DarkSlateGray;
 }
 
 #menu {
-	background-color: #80dfff;
+	background-color: #cceeff;
 	flex-basis: 10%;
 	height: 90%;
 }
@@ -90,7 +93,7 @@ a:active {
 <body>
 
 <div class="mainflex">
-	<div id="header" class="headerflex">KnowledgeBase</div>
+	<div id="header" class="headerflex">retrieve.</div>
 	<div id="menu" class="menuflex">
 		<a href="itemsearch.html" target="contentframe">Search Item</a>
 		<a href="additem.html" target="contentframe">Add Item</a>

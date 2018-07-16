@@ -2,7 +2,7 @@ html,body {
 	border: 0px;
 	margin: 0px;
 	padding: 0px;
-	font-family: Arial;
+	font-family: 'Montserrat', sans-serif;
 	height: 100%;
 }
 
@@ -37,20 +37,20 @@ input[type=text] {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
+    font-size: 16px;
 }
 
 .title {
 	text-align: left;	
-}
-
-.title>h1 {
+	font-size: 30px;
 	padding-left: 10px;
 	color: DarkSlateGray;
+	padding-top: 10px;
 }
 
 #submititem {
 	margin-left: 10px;
-	background-color: #ffff66;
+	background-color: #ffff80;
 	font-size: 16px;
 	border-radius: 12px;
 	padding: 15px 20px;
@@ -59,22 +59,23 @@ input[type=text] {
 	outline: none;
 	cursor: pointer;
 	box-shadow: 0 9px #999;
+	font-family: 'Montserrat', sans-serif;
 }
 
 #submititem:disabled {
 	opacity: 0.6;
     cursor: not-allowed;
-    background-color: #ffff66;
+    background-color: #ffff80;
 }
 
 #submititem:disabled:hover {
 	opacity: 0.6;
     cursor: not-allowed;
-    background-color: #ffff66;
+    background-color: #ffff80;
 }
 
 #submititem:active {
-	background-color: #ffff00;
+	background-color: #ffff66;
 	box-shadow: 0 5px #666;
   	transform: translateY(2px);
 }
@@ -124,10 +125,10 @@ input[type=text] {
 	font-weight: bold;
 	border-style: solid;
 	border-width: 1px;
-	border-color: #00ace6;
+	border-color: #c38888;
 	padding: 2px;
 	color: DarkSlateGray;
-	background-color: #00ace6;
+	background-color: #c38888;
 	flex-basis: 20%;
 }
 
@@ -137,10 +138,10 @@ input[type=text] {
 	font-weight: bold;
 	border-style: solid;
 	border-width: 1px;
-	border-color: #00ace6;
+	border-color: #c38888;
 	padding: 2px;
 	color: DarkSlateGray;
-	background-color: #00ace6;
+	background-color: #c38888;
 	flex-basis: 70%;
 }
 
@@ -168,7 +169,7 @@ input[type=text] {
 }
 
 .resultcellcontent{
-	background-color: #80dfff;
+	background-color: #cceeff;
 	width: 100px;
 	text-align: left;
 	border-style: solid;
