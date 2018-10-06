@@ -10,8 +10,6 @@ import org.springframework.stereotype.Component;
 import com.lees.knowlegeBase.entity.Tag;
 import com.lees.knowlegeBase.utility.MiscUtility;
 
-import antlr.collections.Enumerator;
-
 @Component
 public class MemoryCacheTagRepository implements IMemoryCacheTagRepository {
 

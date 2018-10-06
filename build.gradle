@@ -23,6 +23,7 @@ repositories {
 	mavenCentral()
 }
 
+ext['mockito.version'] = '2.22.0'
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter')
@@ -33,4 +34,7 @@ dependencies {
 	compile('mysql:mysql-connector-java')
 	compile('org.springframework.boot:spring-boot-devtools')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile('javax.xml.bind:jaxb-api')
+	compile group: 'org.javassist', name: 'javassist', version: '3.15.0-GA'
+	
 }

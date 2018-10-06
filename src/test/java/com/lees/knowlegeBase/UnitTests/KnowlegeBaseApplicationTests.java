@@ -1,4 +1,4 @@
-package com.lees.knowlegeBase;
+package com.lees.knowlegeBase.UnitTests;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

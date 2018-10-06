@@ -43,8 +43,7 @@ public class KnowledgeManager implements IKnowledgeManager {
 			String trimmedTag = tag.toLowerCase().trim();
 			
 			if (!tagCache.ContainsTag(trimmedTag)) {
-			
-				tagToSave = SaveTag(trimmedTag);
+				tagToSave = saveTag(trimmedTag);
 				tagCache.AddTag(tagToSave);				
 			}
 			else {
@@ -90,7 +89,7 @@ public class KnowledgeManager implements IKnowledgeManager {
 		return allTags;
 	}
 	
-	public Tag SaveTag(String tag) {
+	public Tag saveTag(String tag) {
 		
 		Tag tagToSave = null;
 		
